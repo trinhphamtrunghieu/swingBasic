@@ -1,18 +1,16 @@
 public class Player {
     public Player(){
     }
-    private int score;
-    private int skipQ;
-    private int solveQ;
-
-    public int getScore() {
-        return score;
+    private int skipQ = 0;
+    private int trueQ = 0;
+    private int falseQ = 0;
+    private Generate generate = new Generate();
+    public Generate getGenerator(){
+        return generate;
     }
-
-    public void setScore(int score) {
-        this.score = score;
+    public void generate(){
+        this.generate = new Generate().Generate();
     }
-
     public int getSkipQ() {
         return skipQ;
     }
@@ -21,11 +19,19 @@ public class Player {
         this.skipQ = skipQ;
     }
 
-    public int getSolveQ() {
-        return solveQ;
+    public int getTrueQ() {
+        return trueQ;
     }
 
-    public void setSolveQ(int solveQ) {
-        this.solveQ = solveQ;
+    public void setTrueQ(int trueQ) {
+        this.trueQ = trueQ;
+    }
+
+    public int getFalseQ() {
+        return falseQ;
+    }
+
+    public void setFalseQ(int falseQ) {
+        this.falseQ = falseQ;
     }
 }

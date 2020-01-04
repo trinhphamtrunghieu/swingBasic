@@ -1,19 +1,19 @@
 import java.util.Random;
 
 public class Generate {
-    private int firstNum;
-    private int secondNum;
+    private float firstNum;
+    private float secondNum;
     private int symbol;
     private double result;
     Random rd = new Random();
 
     public Generate() {
+        System.out.println("Calling default");
     }
-    public Generate Generate(){
-        Generate gen = new Generate();
-        gen.firstNum = this.getFirstNum();
-        gen.secondNum = this.getSecondNum();
-        gen.symbol = this.getSymbol(gen.firstNum,gen.secondNum);
+    public Generate Generate() {
+        this.setFirstNum();
+        this.setSecondNum();
+        this.symbol = this.setSymbol(this.firstNum,this.secondNum);
         switch(symbol){
             case 0: { // +
                 this.result = this.firstNum + this.secondNum;
@@ -27,25 +27,40 @@ public class Generate {
                 this.result = this.firstNum * this.secondNum;
                 break;
             }
-            case 4:{// /
+            case 3:{// /
                 this.result = this.firstNum / this.secondNum;
+                break;
             }
         }
-        return gen;
+        return this;
     }
-    public int getFirstNum() {
-        firstNum = rd.nextInt();
-        return firstNum;
-    }
-
-    public int getSecondNum() {
-        secondNum = rd.nextInt();
-        return secondNum;
+    private void setFirstNum() {
+        this.firstNum = rd.nextInt(100);
     }
 
-    public int getSymbol(int x, int y) {
+    private void setSecondNum() {
+        this.secondNum = rd.nextInt(100);
+    }
+
+    private int setSymbol(float x, float y) {
         if(y==0) return rd.nextInt(3);
         symbol = rd.nextInt(4);
         return symbol;
+    }
+
+    public float getFirstNum() {
+        return firstNum;
+    }
+
+    public float getSecondNum() {
+        return secondNum;
+    }
+
+    public int getSymbol() {
+        return symbol;
+    }
+
+    public double getResult() {
+        return result;
     }
 }
